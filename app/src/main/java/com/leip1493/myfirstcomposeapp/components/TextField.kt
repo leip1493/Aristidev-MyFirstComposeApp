@@ -2,7 +2,11 @@ package com.leip1493.myfirstcomposeapp.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -15,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.unit.dp
 
 @Composable
 fun MyTextFieldParent(modifier: Modifier) {
@@ -26,6 +31,8 @@ fun MyTextFieldParent(modifier: Modifier) {
         MyTextField2(value) { value = it }
         MyAdvancedTextField(value) { value = it }
         MyPasswordTextField(password) { password = it }
+        Spacer(Modifier.height(20.dp))
+        MyOutlinedTextField(value) { value = it}
     }
 }
 
@@ -87,4 +94,9 @@ fun MyPasswordTextField(password: String, onValueChange: (String) -> Unit) {
                 modifier = Modifier.clickable { passwordHidden = !passwordHidden })
         }
     )
+}
+
+@Composable
+fun MyOutlinedTextField(value: String, onChange: (String) -> Unit) {
+    OutlinedTextField(value, onValueChange = { onChange(it) })
 }
