@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.leip1493.myfirstcomposeapp.components.MyTexts
 import com.leip1493.myfirstcomposeapp.components.layout.ConstraintBarrier
 import com.leip1493.myfirstcomposeapp.components.layout.ConstraintChain
 import com.leip1493.myfirstcomposeapp.components.layout.ConstraintExampleGuide
@@ -31,7 +32,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             MyFirstComposeAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    MyState(modifier = Modifier.padding(innerPadding))
+                    MyTexts(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
