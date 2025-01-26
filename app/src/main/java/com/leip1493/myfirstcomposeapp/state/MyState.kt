@@ -1,6 +1,7 @@
 package com.leip1493.myfirstcomposeapp.state
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -10,13 +11,28 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 
 @Composable
-fun MyState(modifier:Modifier) {
-    // 1 - De esta manera no hace falta andar accediendo con .value
-    // 2 - Con el saveable podemos girar la pantalla sin perder el estado
-    var number by rememberSaveable { mutableIntStateOf(0) }
+fun MyState(modifier: Modifier) {
+    // Se debe subir el estado al padre de todos los composables
+    var number1 by rememberSaveable { mutableIntStateOf(0) }
+    var number2 by rememberSaveable { mutableIntStateOf(0) }
 
-    Text("Pulsame ${number}", modifier = modifier.clickable {
-        number += 1
+    Column(modifier = modifier) {
+        StateExample1(number1) { number1 += 1 }
+        StateExample2(number2) { number2 += 1 }
+    }
+
+}
+
+@Composable
+fun StateExample1(number: Int, onClick: () -> Unit) {
+    Text("Pulsame A ${number}", modifier = Modifier.clickable {
+        onClick()
     })
+}
 
+@Composable
+fun StateExample2(number: Int, onClick: () -> Unit) {
+    Text("Pulsame B ${number}", modifier = Modifier.clickable {
+        onClick()
+    })
 }
