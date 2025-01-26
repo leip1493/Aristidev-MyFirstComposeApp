@@ -21,6 +21,7 @@ import com.leip1493.myfirstcomposeapp.components.layout.MyBox
 import com.leip1493.myfirstcomposeapp.components.layout.MyColumn
 import com.leip1493.myfirstcomposeapp.components.layout.MyComplexLayout
 import com.leip1493.myfirstcomposeapp.components.layout.MyRow
+import com.leip1493.myfirstcomposeapp.state.MyState
 import com.leip1493.myfirstcomposeapp.ui.theme.MyFirstComposeAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -30,7 +31,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             MyFirstComposeAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    ConstraintChain(modifier = Modifier.padding(innerPadding))
+                    MyState(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
