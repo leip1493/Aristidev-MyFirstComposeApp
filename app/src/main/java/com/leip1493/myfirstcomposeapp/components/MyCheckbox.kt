@@ -6,15 +6,19 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CheckboxDefaults
+import androidx.compose.material3.RadioButton
+import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TriStateCheckbox
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -36,6 +40,8 @@ fun MyCheckbox(modifier: Modifier) {
 
     val myOptions = getOptions(listOf("Lorem", "Ipsum", "Foo"))
 
+    var selected by remember { mutableStateOf("Lorem") }
+
     Column(modifier) {
         Checkbox(
             checked = state, onCheckedChange = { state = it }, colors = CheckboxDefaults.colors(
@@ -54,6 +60,11 @@ fun MyCheckbox(modifier: Modifier) {
         }
 
         MyTriStatusCheckbox()
+
+        MyRadioButton()
+
+        Text("Radio buttons con multiples elementos", modifier = Modifier.padding(start = 8.dp))
+        MyRadioButtonList(selected) { name -> selected = name }
     }
 }
 
@@ -125,5 +136,74 @@ fun MyTriStatusCheckbox() {
             }
         })
         Text("Checkbox tri estado (ON, OFF, Indeterminado)")
+    }
+}
+
+@Composable
+fun MyRadioButton() {
+    Row(Modifier.fillMaxWidth()) {
+        RadioButton(
+            selected = false, onClick = {}, colors = RadioButtonDefaults.colors(
+                selectedColor = Color.Red,
+                unselectedColor = Color.Blue,
+                disabledUnselectedColor = Color.Green
+            )
+        )
+        Text("Radio 1")
+    }
+}
+
+@Composable
+fun MyRadioButtonList(name: String, onItemSelected: (String) -> Unit) {
+    Column(Modifier.fillMaxWidth()) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            RadioButton(
+                selected = name == "Lorem",
+                onClick = { onItemSelected("Lorem") },
+                colors = RadioButtonDefaults.colors(
+                    selectedColor = Color.Red,
+                    unselectedColor = Color.Blue,
+                    disabledUnselectedColor = Color.Green
+                )
+            )
+            Text("Lorem")
+        }
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            RadioButton(
+                selected = name == "Ipsum",
+                onClick = {
+                    onItemSelected("Ipsum")
+                }, colors = RadioButtonDefaults.colors(
+                    selectedColor = Color.Red,
+                    unselectedColor = Color.Blue,
+                    disabledUnselectedColor = Color.Green
+                )
+            )
+            Text("Ipsum")
+        }
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            RadioButton(
+                selected = name == "Foo",
+                onClick = { onItemSelected("Foo") },
+                colors = RadioButtonDefaults.colors(
+                    selectedColor = Color.Red,
+                    unselectedColor = Color.Blue,
+                    disabledUnselectedColor = Color.Green
+                )
+            )
+            Text("Foo")
+        }
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            RadioButton(
+                selected = name == "Bar",
+                onClick = { onItemSelected("Bar") },
+                colors = RadioButtonDefaults.colors(
+                    selectedColor = Color.Red,
+                    unselectedColor = Color.Blue,
+                    disabledUnselectedColor = Color.Green
+                )
+            )
+            Text("Bar")
+        }
     }
 }
