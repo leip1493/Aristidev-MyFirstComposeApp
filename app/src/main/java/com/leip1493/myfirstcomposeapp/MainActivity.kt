@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.leip1493.myfirstcomposeapp.components.MyButtons
 import com.leip1493.myfirstcomposeapp.components.MyTextField
 import com.leip1493.myfirstcomposeapp.components.MyTextFieldParent
 import com.leip1493.myfirstcomposeapp.ui.theme.MyFirstComposeAppTheme
@@ -22,7 +23,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             MyFirstComposeAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    MyTextFieldParent(modifier = Modifier.padding(innerPadding))
+                    MyButtons(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
