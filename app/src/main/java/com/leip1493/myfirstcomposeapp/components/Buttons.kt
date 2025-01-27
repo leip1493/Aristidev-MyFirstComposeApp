@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -37,9 +38,19 @@ fun MyButtons(modifier: Modifier) {
             )
 
         ) {
-
             Text("Pulsame")
+        }
 
+        OutlinedButton(
+            onClick = {},
+            colors = ButtonDefaults.outlinedButtonColors(
+                contentColor = Color.Blue,
+                containerColor = Color.Green,
+                disabledContentColor = Color.Yellow,
+                disabledContainerColor = Color.Green
+            )
+        ) {
+            Text("Outlined")
         }
     }
 }
