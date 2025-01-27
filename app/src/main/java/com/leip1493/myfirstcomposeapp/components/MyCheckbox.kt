@@ -19,38 +19,91 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
+
 @Composable
 fun MyCheckbox(modifier: Modifier) {
     var state by rememberSaveable { mutableStateOf(true) }
 
+    var checkInfoStatus by rememberSaveable { mutableStateOf(true) }
+    val checkInfo = CheckInfo(title = "Elemento 1", selected = checkInfoStatus) {
+        checkInfoStatus = it
+    }
+
+    val myOptions = getOptions(listOf("Lorem", "Ipsum", "Foo"))
+
     Column(modifier) {
         Checkbox(
-            checked = state,
-            onCheckedChange = { state = it },
-            colors = CheckboxDefaults.colors(
-                checkedColor = Color.Cyan,
-                uncheckedColor = Color.Green,
-                checkmarkColor = Color.Gray
+            checked = state, onCheckedChange = { state = it }, colors = CheckboxDefaults.colors(
+                checkedColor = Color.Cyan, uncheckedColor = Color.Green, checkmarkColor = Color.Gray
             )
         )
 
         // Checkbox con texto
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            Checkbox(
-                checked = !state,
-                onCheckedChange = { state = !it },
-                colors = CheckboxDefaults.colors(
-                    checkedColor = Color.Cyan,
-                    uncheckedColor = Color.Green,
-                    checkmarkColor = Color.Gray
-                )
-            )
-            Spacer(Modifier.width(8.dp))
-            Text("Ejemplo 1")
+        CheckboxWithText()
 
+        MyCheckboxWithTextCompleted(checkInfo)
+
+        myOptions.forEach {
+            MyCheckboxWithTextCompleted(it)
         }
     }
 }
+
+
+@Composable
+private fun CheckboxWithText() {
+    var state by rememberSaveable { mutableStateOf(true) }
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Checkbox(
+            checked = state, onCheckedChange = { state = it }, colors = CheckboxDefaults.colors(
+                checkedColor = Color.Cyan, uncheckedColor = Color.Green, checkmarkColor = Color.Gray
+            )
+        )
+        Spacer(Modifier.width(8.dp))
+        Text("Ejemplo 1")
+
+    }
+}
+
+data class CheckInfo(
+    val title: String,
+    var selected: Boolean = false,
+    var onCheckedChange: (Boolean) -> Unit,
+)
+
+
+@Composable
+private fun MyCheckboxWithTextCompleted(checkInfo: CheckInfo) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Checkbox(
+            checked = checkInfo.selected,
+            onCheckedChange = { checkInfo.onCheckedChange(it) },
+            colors = CheckboxDefaults.colors(
+                checkedColor = Color.Cyan, uncheckedColor = Color.Green, checkmarkColor = Color.Gray
+            )
+        )
+        Spacer(Modifier.width(8.dp))
+        Text(checkInfo.title)
+
+    }
+}
+
+
+@Composable
+fun getOptions(titles: List<String>): List<CheckInfo> {
+    return titles.map {
+        var status by rememberSaveable { mutableStateOf(true) }
+        CheckInfo(
+            title = it,
+            selected = status
+        ) {
+            status = it
+        }
+    }
+}
+
 
