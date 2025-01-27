@@ -15,6 +15,7 @@ import com.leip1493.myfirstcomposeapp.components.MyButtons
 import com.leip1493.myfirstcomposeapp.components.MyIcon
 import com.leip1493.myfirstcomposeapp.components.MyImage
 import com.leip1493.myfirstcomposeapp.components.MyImageAdvanced
+import com.leip1493.myfirstcomposeapp.components.MyProgressBar
 import com.leip1493.myfirstcomposeapp.components.MyTextField
 import com.leip1493.myfirstcomposeapp.components.MyTextFieldParent
 import com.leip1493.myfirstcomposeapp.ui.theme.MyFirstComposeAppTheme
@@ -26,7 +27,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             MyFirstComposeAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    MyIcon(modifier = Modifier.padding(innerPadding))
+                    MyProgressBar(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
