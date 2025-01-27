@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.leip1493.myfirstcomposeapp.components.MyButtons
 import com.leip1493.myfirstcomposeapp.components.MyImage
+import com.leip1493.myfirstcomposeapp.components.MyImageAdvanced
 import com.leip1493.myfirstcomposeapp.components.MyTextField
 import com.leip1493.myfirstcomposeapp.components.MyTextFieldParent
 import com.leip1493.myfirstcomposeapp.ui.theme.MyFirstComposeAppTheme
@@ -24,7 +25,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             MyFirstComposeAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    MyImage(modifier = Modifier.padding(innerPadding))
+                    MyImageAdvanced(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
