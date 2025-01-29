@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.leip1493.myfirstcomposeapp.components.MyButtons
+import com.leip1493.myfirstcomposeapp.components.MyCard
 import com.leip1493.myfirstcomposeapp.components.MyCheckbox
 import com.leip1493.myfirstcomposeapp.components.MyIcon
 import com.leip1493.myfirstcomposeapp.components.MyImage
@@ -30,7 +31,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             MyFirstComposeAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    MyCheckbox(modifier = Modifier.padding(innerPadding))
+                    MyCard(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
