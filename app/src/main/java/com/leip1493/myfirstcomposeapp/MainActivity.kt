@@ -22,6 +22,7 @@ import com.leip1493.myfirstcomposeapp.components.MyImage
 import com.leip1493.myfirstcomposeapp.components.MyImageAdvanced
 import com.leip1493.myfirstcomposeapp.components.MyProgressAdvanced
 import com.leip1493.myfirstcomposeapp.components.MyProgressBar
+import com.leip1493.myfirstcomposeapp.components.MySlider
 import com.leip1493.myfirstcomposeapp.components.MySwitch
 import com.leip1493.myfirstcomposeapp.components.MyTextField
 import com.leip1493.myfirstcomposeapp.components.MyTextFieldParent
@@ -34,7 +35,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             MyFirstComposeAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    MyDropdownMenu(modifier = Modifier.padding(innerPadding))
+                    MySlider(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
