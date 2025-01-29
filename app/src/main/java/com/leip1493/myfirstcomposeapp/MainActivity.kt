@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.leip1493.myfirstcomposeapp.components.MyBadgeBox
 import com.leip1493.myfirstcomposeapp.components.MyButtons
 import com.leip1493.myfirstcomposeapp.components.MyCard
 import com.leip1493.myfirstcomposeapp.components.MyCheckbox
@@ -31,7 +32,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             MyFirstComposeAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    MyCard(modifier = Modifier.padding(innerPadding))
+                    MyBadgeBox(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
