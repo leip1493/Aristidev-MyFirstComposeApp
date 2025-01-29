@@ -15,6 +15,7 @@ import com.leip1493.myfirstcomposeapp.components.MyBadgeBox
 import com.leip1493.myfirstcomposeapp.components.MyButtons
 import com.leip1493.myfirstcomposeapp.components.MyCard
 import com.leip1493.myfirstcomposeapp.components.MyCheckbox
+import com.leip1493.myfirstcomposeapp.components.MyDialogs
 import com.leip1493.myfirstcomposeapp.components.MyDivider
 import com.leip1493.myfirstcomposeapp.components.MyDropdownMenu
 import com.leip1493.myfirstcomposeapp.components.MyIcon
@@ -35,7 +36,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             MyFirstComposeAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    MySlider(modifier = Modifier.padding(innerPadding))
+                    MyDialogs(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
