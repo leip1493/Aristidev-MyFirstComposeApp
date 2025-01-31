@@ -1,8 +1,5 @@
 package com.leip1493.myfirstcomposeapp.components
 
-import android.widget.Space
-import android.widget.ToggleButton
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -26,7 +23,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.state.ToggleableState
 import androidx.compose.ui.unit.dp
-import androidx.constraintlayout.compose.VerticalAlign
 
 
 @Composable
@@ -166,7 +162,7 @@ fun MyRadioButtonList(name: String, onItemSelected: (String) -> Unit) {
                     disabledUnselectedColor = Color.Green
                 )
             )
-            Text("Lorem")
+            Text("Lorem", color = Color.Black)
         }
         Row(verticalAlignment = Alignment.CenterVertically) {
             RadioButton(
@@ -179,7 +175,7 @@ fun MyRadioButtonList(name: String, onItemSelected: (String) -> Unit) {
                     disabledUnselectedColor = Color.Green
                 )
             )
-            Text("Ipsum")
+            Text("Ipsum", color = Color.Black)
         }
         Row(verticalAlignment = Alignment.CenterVertically) {
             RadioButton(
@@ -191,7 +187,7 @@ fun MyRadioButtonList(name: String, onItemSelected: (String) -> Unit) {
                     disabledUnselectedColor = Color.Green
                 )
             )
-            Text("Foo")
+            Text("Foo", color = Color.Black)
         }
         Row(verticalAlignment = Alignment.CenterVertically) {
             RadioButton(
@@ -203,7 +199,7 @@ fun MyRadioButtonList(name: String, onItemSelected: (String) -> Unit) {
                     disabledUnselectedColor = Color.Green
                 )
             )
-            Text("Bar")
+            Text("Bar", color = Color.Black)
         }
     }
 }
