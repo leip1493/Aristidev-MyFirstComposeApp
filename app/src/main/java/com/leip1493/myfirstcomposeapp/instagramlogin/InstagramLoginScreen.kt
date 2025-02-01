@@ -47,6 +47,36 @@ fun InstagramLoginScreen(modifier: Modifier) {
     ) {
         Header(Modifier.align(Alignment.TopEnd))
         Body(Modifier.align(Alignment.Center))
+        Footer(Modifier.align(Alignment.BottomCenter))
+    }
+}
+
+@Composable
+fun Footer(modifier: Modifier) {
+    Column(modifier.fillMaxWidth()) {
+        HorizontalDivider(
+            Modifier
+                .background(Color(0xFFf9f9f9))
+                .height(1.dp)
+                .fillMaxWidth()
+        )
+        Spacer(Modifier.size(24.dp))
+        SignUp()
+        Spacer(Modifier.size(24.dp))
+    }
+}
+
+@Composable
+fun SignUp() {
+    Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
+        Text("Don´t have an account?", fontSize = 12.sp, color = Color(0xFF726E6E))
+        Text(
+            "Sign up.",
+            modifier = Modifier.padding(horizontal = 8.dp),
+            fontSize = 12.sp,
+            fontWeight = FontWeight.Bold,
+            color = Color(0xFF4EA8E9)
+        )
     }
 }
 
