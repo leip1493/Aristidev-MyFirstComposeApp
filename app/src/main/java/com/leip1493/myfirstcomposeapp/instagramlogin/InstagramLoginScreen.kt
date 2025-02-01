@@ -2,6 +2,7 @@ package com.leip1493.myfirstcomposeapp.instagramlogin
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.util.Patterns
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -15,12 +16,14 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -78,9 +81,15 @@ fun Body(modifier: Modifier) {
     Column(modifier = modifier) {
         ImageLogo(Modifier.align(Alignment.CenterHorizontally))
         Spacer(Modifier.size(16.dp))
-        Email(email) { email = it }
+        Email(email) {
+            email = it
+            isLoginEnabled = enableLogin(email, password)
+        }
         Spacer(Modifier.size(4.dp))
-        Password(password) { password = it }
+        Password(password) {
+            password = it
+            isLoginEnabled = enableLogin(email, password)
+        }
         Spacer(Modifier.size(8.dp))
         ForgotPassword(Modifier.align(Alignment.End))
         Spacer(Modifier.size(16.dp))
@@ -139,9 +148,24 @@ fun LoginDivider() {
 
 @Composable
 fun LoginButton(isLoginEnabled: Boolean) {
-    Button(onClick = {}, enabled = isLoginEnabled, modifier = Modifier.fillMaxWidth()) {
+    Button(
+        onClick = {},
+        enabled = isLoginEnabled,
+        modifier = Modifier.fillMaxWidth(),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = Color(0xFF4EA8E9),
+            disabledContainerColor = Color(0xFF78C8F9),
+            contentColor = Color.White,
+            disabledContentColor = Color.White
+        ),
+        shape = RoundedCornerShape(4.dp),
+    ) {
         Text("Login")
     }
+}
+
+fun enableLogin(email: String, password: String): Boolean {
+    return Patterns.EMAIL_ADDRESS.matcher(email).matches() && password.length >= 6
 }
 
 @Composable
@@ -157,7 +181,8 @@ fun ForgotPassword(modifier: Modifier) {
 
 @Composable
 fun Email(email: String, onChange: (String) -> Unit) {
-    TextField(email,
+    TextField(
+        email,
         onValueChange = { onChange(it) },
         modifier = Modifier.fillMaxWidth(),
         placeholder = { Text("Email") },
@@ -179,7 +204,8 @@ fun Email(email: String, onChange: (String) -> Unit) {
 fun Password(password: String, onChange: (String) -> Unit) {
     var passwordVisibility by remember { mutableStateOf(false) }
 
-    TextField(password,
+    TextField(
+        password,
         onValueChange = { onChange(it) },
         modifier = Modifier.fillMaxWidth(),
         placeholder = { Text("Password") },
