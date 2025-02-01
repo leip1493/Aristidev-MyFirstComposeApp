@@ -11,22 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.leip1493.myfirstcomposeapp.components.MyBadgeBox
-import com.leip1493.myfirstcomposeapp.components.MyButtons
-import com.leip1493.myfirstcomposeapp.components.MyCard
-import com.leip1493.myfirstcomposeapp.components.MyCheckbox
-import com.leip1493.myfirstcomposeapp.components.MyDialogs
-import com.leip1493.myfirstcomposeapp.components.MyDivider
-import com.leip1493.myfirstcomposeapp.components.MyDropdownMenu
-import com.leip1493.myfirstcomposeapp.components.MyIcon
-import com.leip1493.myfirstcomposeapp.components.MyImage
-import com.leip1493.myfirstcomposeapp.components.MyImageAdvanced
-import com.leip1493.myfirstcomposeapp.components.MyProgressAdvanced
-import com.leip1493.myfirstcomposeapp.components.MyProgressBar
-import com.leip1493.myfirstcomposeapp.components.MySlider
-import com.leip1493.myfirstcomposeapp.components.MySwitch
-import com.leip1493.myfirstcomposeapp.components.MyTextField
-import com.leip1493.myfirstcomposeapp.components.MyTextFieldParent
+import com.leip1493.myfirstcomposeapp.instagramlogin.InstagramLoginScreen
 import com.leip1493.myfirstcomposeapp.ui.theme.MyFirstComposeAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -36,7 +21,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             MyFirstComposeAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    MyDialogs(modifier = Modifier.padding(innerPadding))
+                    InstagramLoginScreen(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
@@ -46,8 +31,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(
-        text = "Hello $name!",
-        modifier = modifier
+        text = "Hello $name!", modifier = modifier
     )
 }
 

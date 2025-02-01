@@ -42,7 +42,7 @@ fun MyDialogs(modifier: Modifier) {
     var showAlertDialog by remember { mutableStateOf(false) }
     var showSimpleDialog by remember { mutableStateOf(false) }
     var showCustomDialog by remember { mutableStateOf(false) }
-    var showConfirmationDialog by remember { mutableStateOf(true) }
+    var showConfirmationDialog by remember { mutableStateOf(false) }
 
     Column(
         modifier = modifier.fillMaxSize(),
