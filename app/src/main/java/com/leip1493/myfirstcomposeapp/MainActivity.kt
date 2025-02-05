@@ -11,7 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.leip1493.myfirstcomposeapp.components.SuperHeroStickyView
+import com.leip1493.myfirstcomposeapp.components.MyScaffold
 import com.leip1493.myfirstcomposeapp.ui.theme.MyFirstComposeAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             MyFirstComposeAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    SuperHeroStickyView(modifier = Modifier.padding(innerPadding))
+                    MyScaffold(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
