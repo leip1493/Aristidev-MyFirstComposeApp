@@ -3,12 +3,15 @@ package com.leip1493.myfirstcomposeapp.components
 import android.annotation.SuppressLint
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.ArrowBack
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FabPosition
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.NavigationBar
@@ -33,12 +36,16 @@ import kotlinx.coroutines.launch
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun MyScaffold(modifier: Modifier) {
-    val snackbarHostState = remember { SnackbarHostState() }
+    val snackBarHostState = remember { SnackbarHostState() }
     val coroutineScope = rememberCoroutineScope()
 
-    Scaffold(topBar = { MyTopAppBar() { coroutineScope.launch { snackbarHostState.showSnackbar("Has pulsado $it") } } },
-        snackbarHost = { SnackbarHost(snackbarHostState) },
-        bottomBar = { MyBottomNavigation() }) {
+    Scaffold(
+        topBar = { MyTopAppBar() { coroutineScope.launch { snackBarHostState.showSnackbar("Has pulsado $it") } } },
+        snackbarHost = { SnackbarHost(snackBarHostState) },
+        bottomBar = { MyBottomNavigation() },
+        floatingActionButton = { MyFloatingActionButton() },
+        floatingActionButtonPosition = FabPosition.Center,
+    ) {
 
     }
 }
@@ -93,4 +100,18 @@ fun MyBottomNavigation() {
         )
         )
     }
+}
+
+@Composable
+fun MyFloatingActionButton() {
+//    Box {
+    FloatingActionButton(
+        onClick = {},
+        containerColor = Color.White,
+        contentColor = Color.DarkGray,
+//            modifier = Modifier.offset(y = 45.dp)
+    ) {
+        Icon(imageVector = Icons.Filled.Add, contentDescription = "Add")
+    }
+//    }
 }
