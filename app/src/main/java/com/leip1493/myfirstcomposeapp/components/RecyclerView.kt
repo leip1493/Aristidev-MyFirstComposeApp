@@ -7,10 +7,14 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
@@ -31,6 +35,26 @@ data class Superhero(
     val publisher: String,
     @DrawableRes val photo: Int,
 )
+
+@Composable
+fun SuperHeroGridView(modifier: Modifier) {
+    val context = LocalContext.current
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(2),
+        contentPadding = PaddingValues(16.dp), // Margen exterior al listado
+        verticalArrangement = Arrangement.spacedBy(16.dp), // Espaciado vertical entre elementos
+        horizontalArrangement = Arrangement.spacedBy(16.dp), // Espaciado horizontal entre elementos
+        modifier = modifier.fillMaxWidth(),
+        content = {
+            items(getSuperHeroes()) { superhero ->
+                ItemHero(superhero) {
+                    Toast.makeText(context, it.realName, Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    )
+}
+
 
 @Composable
 fun SuperHeroView(modifier: Modifier) {
@@ -92,3 +116,4 @@ fun getSuperHeroes(): List<Superhero> {
         Superhero("Wonder Woman", "Princess Diana", "DC", R.drawable.wonder_woman),
     )
 }
+

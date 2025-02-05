@@ -11,8 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.leip1493.myfirstcomposeapp.components.SuperHeroView
-import com.leip1493.myfirstcomposeapp.reto1tweet.TweetScreen
+import com.leip1493.myfirstcomposeapp.components.SuperHeroGridView
 import com.leip1493.myfirstcomposeapp.ui.theme.MyFirstComposeAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -22,7 +21,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             MyFirstComposeAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    SuperHeroView(modifier = Modifier.padding(innerPadding))
+                    SuperHeroGridView(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
