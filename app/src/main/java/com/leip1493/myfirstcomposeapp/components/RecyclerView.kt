@@ -3,7 +3,9 @@ package com.leip1493.myfirstcomposeapp.components
 import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -88,8 +90,7 @@ fun SuperHeroWithSpecialControlsView(modifier: Modifier) {
                     coroutinesScope.launch {
                         rvState.animateScrollToItem(0)
                     }
-                },
-                modifier = Modifier
+                }, modifier = Modifier
                     .align(Alignment.CenterHorizontally)
                     .padding(16.dp)
             ) {
@@ -97,6 +98,36 @@ fun SuperHeroWithSpecialControlsView(modifier: Modifier) {
             }
         }
 
+    }
+}
+
+@ExperimentalFoundationApi
+@Composable
+fun SuperHeroStickyView(modifier: Modifier) {
+    val superheroes: Map<String, List<Superhero>> = getSuperHeroes().groupBy { it.publisher }
+    val context = LocalContext.current
+
+    LazyColumn(
+        modifier = modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        superheroes.forEach { (publisher, superheroes) ->
+            stickyHeader {
+                Text(
+                    publisher,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(Color.White),
+                    color = Color.Black,
+                )
+            }
+            items(superheroes) { superhero ->
+                ItemHero(superhero) {
+                    Toast.makeText(context, it.realName, Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
 }
 
