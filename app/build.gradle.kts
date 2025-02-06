@@ -52,7 +52,9 @@ dependencies {
     implementation(libs.constraint.layout)
     implementation(libs.androidx.material.icons.extended)
     implementation(libs.androidx.livedata)
-    
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.gson)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
