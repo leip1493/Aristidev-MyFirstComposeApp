@@ -47,31 +47,33 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.leip1493.myfirstcomposeapp.R
 
 @Composable
 fun InstagramLoginScreen(
     modifier: Modifier,
-    loginViewModel: LoginViewModel = LoginViewModel(),
+    loginViewModel: LoginViewModel = hiltViewModel(),
 ) {
     val isLoading: Boolean by loginViewModel.isLoading.observeAsState(false)
 
-    Box(
-        modifier
-            .fillMaxSize()
-            .background(Color.White)
-            .padding(8.dp)
-    ) {
-        if (isLoading) {
-            Box(
-                Modifier.fillMaxSize()
-            ) {
-                CircularProgressIndicator(Modifier.align(Alignment.Center))
-            }
-        } else {
+    if (isLoading) {
+        Box(
+            Modifier.fillMaxSize()
+        ) {
+            CircularProgressIndicator(Modifier.align(Alignment.Center))
+        }
+    } else {
+        Box(
+            modifier
+                .fillMaxSize()
+                .background(Color.White)
+                .padding(8.dp)
+        ) {
             Header(Modifier.align(Alignment.TopEnd))
             Body(Modifier.align(Alignment.Center), loginViewModel)
             Footer(Modifier.align(Alignment.BottomCenter))
+
         }
     }
 }
