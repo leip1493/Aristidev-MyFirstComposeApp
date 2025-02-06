@@ -23,6 +23,7 @@ import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -53,15 +54,25 @@ fun InstagramLoginScreen(
     modifier: Modifier,
     loginViewModel: LoginViewModel = LoginViewModel(),
 ) {
+    val isLoading: Boolean by loginViewModel.isLoading.observeAsState(false)
+
     Box(
         modifier
             .fillMaxSize()
             .background(Color.White)
             .padding(8.dp)
     ) {
-        Header(Modifier.align(Alignment.TopEnd))
-        Body(Modifier.align(Alignment.Center), loginViewModel)
-        Footer(Modifier.align(Alignment.BottomCenter))
+        if (isLoading) {
+            Box(
+                Modifier.fillMaxSize()
+            ) {
+                CircularProgressIndicator(Modifier.align(Alignment.Center))
+            }
+        } else {
+            Header(Modifier.align(Alignment.TopEnd))
+            Body(Modifier.align(Alignment.Center), loginViewModel)
+            Footer(Modifier.align(Alignment.BottomCenter))
+        }
     }
 }
 
@@ -94,7 +105,7 @@ fun Body(modifier: Modifier, loginViewModel: LoginViewModel) {
         Spacer(Modifier.size(8.dp))
         ForgotPassword(Modifier.align(Alignment.End))
         Spacer(Modifier.size(16.dp))
-        LoginButton(isLoginEnabled)
+        LoginButton(isLoginEnabled, loginViewModel)
         Spacer(Modifier.size(16.dp))
         LoginDivider()
         Spacer(Modifier.size(32.dp))
@@ -148,9 +159,9 @@ fun LoginDivider() {
 }
 
 @Composable
-fun LoginButton(isLoginEnabled: Boolean) {
+fun LoginButton(isLoginEnabled: Boolean, loginViewModel: LoginViewModel) {
     Button(
-        onClick = {},
+        onClick = { loginViewModel.onLoginSelected() },
         enabled = isLoginEnabled,
         modifier = Modifier.fillMaxWidth(),
         colors = ButtonDefaults.buttonColors(
