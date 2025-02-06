@@ -4,8 +4,12 @@ import android.util.Patterns
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.leip1493.myfirstcomposeapp.instagramlogin.domain.LoginUseCase
 
 class LoginViewModel : ViewModel() {
+
+    private val loginUseCase = LoginUseCase()
+
     private val _email = MutableLiveData<String>()
     val email: LiveData<String> = _email
 
