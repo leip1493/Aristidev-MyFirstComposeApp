@@ -1,4 +1,4 @@
-package com.leip1493.myfirstcomposeapp.instagramlogin
+package com.leip1493.myfirstcomposeapp.instagramlogin.ui
 
 import android.util.Patterns
 import androidx.lifecycle.LiveData
